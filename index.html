@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honor of Kings Roamer Counters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('images/background.jpg'); /* Replace with your wallpaper file path */
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .result-card {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+
+    .result-card h2 {
+      margin: 0;
+      color: #444;
+    }
+
+    .result-card p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .no-results {
+      text-align: center;
+      color: #999;
+    }
+  </style>
+</head><body>
+  <div class="container">
+    <h1>Honor of Kings Roamer Counters</h1>
+    <input
+      type="text"
+      class="search-bar"
+      placeholder="Search for a hero or counter (use + for multiple terms)..."
+      id="searchBar"
+      oninput="filterResults()"
+    />
+
+    <div id="resultList">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+  </div>
+
+  <script>
+    const roamerData = [
+      {
+        name: "Zhang Fei",
+        image: "images/zhangfei.jpg", // Path to Zhang Fei's image
+        counters: {
+          clash: ["Lu Bu", "Mulan", "Fuzi", "Dharma"],
+          jungler: ["Butterfly", "Han Xin", "Li Bai"],
+          mid: ["Diao Chan", "Gao Jianli", "Kong Ming", "Mozi"],
+          roamer: ["Lian Po", "Dun"],
+          farmLaner: ["Luban No.7", "Marco Polo", "Arli", "Shou Yue", "Loong", "Fang"]
+        }
+      },
+      {
+        name: "Sun Bin",
+        image: "images/sunbin.jpg", // Path to Sun Bin's image        
+        counters: {
+          clash: ["Mulan", "Yang Jian", "Guan Yu", "Lu Bu"],
+          jungler: ["Li Bai", "Nakroth", "Butterfly", "Han Xin"],
+          mid: ["Mozi", "Angela", "Kong Ming"],
+          roamer: ["Donghuang Taiyi", "Zhuangzi", "Kui"],
+          farmLaner: ["Garo", "Hou Yi", "Marco Polo", "Arli"]
+        }
+      },
+      {
+        name: "Lian Po",
+image: "images/lianpo.jpg", // Path to Lian Po's image        
+counters: {
+          clash: ["Guan Yu", "Xiang Yu", "Fuzi", "Dharma"],
+          jungler: ["Han Xin", "Zhao Yun", "Musashi", "Butterfly", "Li Bai"],
+          mid: ["Shangguan Wan'er", "Gao Jianli", "Mozi"],
+          roamer: ["Zhang Fei", "Dun"],
+          farmLaner: ["Marco Polo", "Lady Sun", "Hou Yi", "Consort Yu", "Arli", "Fang"]
+        }
+      },
+      {
+        name: "Mozi",
+image: "images/mozi.jpg", // Path to Mozi's image  
+        counters: {
+          clash: ["Lu Bu", "Mulan"],
+          jungler: ["Li Bai", "Nakroth", "Lam", "Wukong"],
+          mid: ["Diao Chan", "Gao Jianli", "Angela"],
+          roamer: ["Lian Po", "Zhang Fei", "Dyadia"],
+          farmLaner: ["Luban No.7", "Hou Yi", "Loong", "Arli"]
+        }
+      },
+      {
+        name: "Donghuang Taiyi",
+image: "images/donghuang.jpg", // Path to Donghuang's image          
+counters: {
+          clash: ["Mulan", "Yang Jian"],
+          jungler: ["Zhao Yun", "Nakroth", "Musashi", "Lam", "Wukong"],
+          mid: ["Angela", "Zhuge Liang", "Gan and Mo", "Shangguan", "Kong Ming"],
+          roamer: ["Zhang Fei", "Lian Po"],
+          farmLaner: ["Luban No.7", "Marco Polo", "Hou Yi", "Consort Yu", "Shou Yue", "Arli"]
+        }
+},
+{
+  name: "Zhuangzi",
+  image: "images/zhuangzi.jpg", // Path to Zhuangzi's image
+  counters: {
+    clash: ["Yang Jian", "Guan Yu"],
+    jungler: ["Nakroth", "Han Xin", "Musashi", "Lam"],
+    mid: ["Zhuge Liang", "Gao Jianli", "Kong Ming"],
+    roamer: ["Lian Po", "Donghuang Taiyi"],
+    farmLaner: ["Hou Yi", "Luban No.7", "Consort Yu", "Shou Yue"]
+  }
+},
+{
+  name: "Dun",
+  image: "images/dun.jpg", // Path to Dun's image
+  counters: {
+    clash: ["Lu Bu", "Mulan"],
+    jungler: ["Butterfly", "Lam", "Han Xin"],
+    mid: ["Diao Chan", "Zhuge Liang"],
+    roamer: ["Donghuang Taiyi", "Zhuangzi"],
+    farmLaner: ["Luban No.7", "Marco Polo"]
+  }
+      },
+      {
+        name: "Guiguzi",
+image: "images/guiguzi.jpg", // Path to Guiguzi's image          
+counters: {
+          clash: ["Xiang Yu", "Lu Bu"],
+          jungler: ["Butterfly", "Li Bai", "Wukong"],
+          mid: ["Mozi", "Shangguan Wan'er"],
+          roamer: ["Sun Bin", "Zhuangzi"],
+          farmLaner: ["Marco Polo", "Lady Sun", "Hou Yi", "Arli"]
+        }
+      },
+      {
+        name: "Dolia",
+image: "images/dolia.jpg", // Path to Dolia's image       
+ counters: {
+          clash: ["Sima Yi", "Dun"],
+          jungler: ["Nakroth", "Han Xin", "Prince of Lanling"],
+          mid: ["Mozi", "Diao Chan"],
+          roamer: ["Zhuangzi", "Lian Po", "Guiguzi"],
+          farmLaner: ["Marco Polo", "Lady Sun"]
+        }
+      },
+      {
+        name: "Liang",
+image: "images/liang.jpg", // Path to Liang's image        
+counters: {
+          clash: ["Shangguan", "Gan & Mo"],
+          jungler: ["Nakroth", "Han Xin", "Lam", "Augran"],
+          mid: ["Zhuge Liang", "Gao Jianli"],
+          roamer: ["Zhuangzi", "Donghuang Taiyi"],
+          farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun", "Di Renjie"]
+        }
+ },
+     {
+        name: "Da Qiao",
+image: "images/daqiao.jpg", // Path to Da Qiao's image        
+counters: {
+          clash: ["Lu Bu", "Mulan", "Sun Ce"],
+          jungler: ["Butterfly", "Han Xin", "Luna", "Han Xin"],
+          mid: ["Diao Chan", "Gao Jianli", "Mozi"],
+          roamer: ["Lian Po", "Dun"],
+          farmLaner: ["Luban No.7", "Marco Polo"]
+        }
+},
+{
+  name: "Cai Yan",
+  image: "images/caiyan.jpg", // Path to Cai Yan's image
+  counters: {
+    clash: ["Prince of Lanling", "Hua Mulan", "Kong Ming", "Arthur"],
+    jungler: ["Gan", "Mo"],
+    mid: ["Zhuge Liang", "Gao Jianli", "Gan and Mo"],
+    roamer: ["Donghuang Taiyi", "Zhuangzi"],
+    farmLaner: ["Marco Polo", "Hou Yi", "Shou Yue", "Lady Sun"]
+  }
+      },
+      {
+        name: "Ming",
+image: "images/ming.jpg", // Path to Ming's image        
+counters: {
+          clash: ["Guan Yu", "Xiang Yu"],
+          jungler: ["Han Xin", "Zhao Yun", "Li Bai"],
+          mid: ["Shangguan Wan'er", "Gao Jianli", "Mozi", "Diao Chan"],
+          roamer: ["Zhang Fei", "Dun"],
+          farmLaner: ["Marco Polo", "Lady Sun"]
+        }
+      },
+      {
+        name: "Dyadia",
+ image: "images/dyadia.jpg", // Path to Dyadia's image
+        counters: {
+          clash: ["Xiang Yu", "Lu Bu", "Arthur"],
+          jungler: ["Butterfly", "Li Bai"],
+          mid: ["Mozi", "Shangguan Wan'er"],
+          roamer: ["Sun Bin", "Zhuangzi", "Cai Yan", "Ming"],
+          farmLaner: ["Marco Polo", "Lady Sun", "Consort Yu"]
+        }
+      },
+      {
+        name: "Yaria",
+image: "images/yaria.jpg", // Path to Yaria's image        
+counters: {
+          clash: ["Mulan", "Yang Jian"],
+          jungler: ["Li Bai", "Nakroth", "Prince of Lanling", "Musashi"],
+          mid: ["Mozi", "Angela", "Daji"],
+          roamer: ["Donghuang Taiyi", "Zhuangzi"],
+          farmLaner: ["Garo", "Hou Yi", "Marco Polo", "Lady Sun"]
+        }
+      },
+      {
+        name: "Kui",
+image: "images/kui.jpg", // Path to Kui's image        
+counters: {
+          clash: ["Yang Jian", "Guan Yu"],
+          jungler: ["Nakroth", "Han Xin", "Wukong"],
+          mid: ["Kong Ming", "Gao Jianli", "Angela", "Daji"],
+          roamer: ["Lian Po", "Donghuang Taiyi"],
+          farmLaner: ["Hou Yi", "Luban No.7", "Marco Polo, "Lady Sun"]
+        }
+      },
+      {
+        name: "Liu Shan",
+image: "images/liushan.jpg", // Path to Liu Shan's image        
+counters: {
+          clash: ["Lu Bu", "Mulan"],
+          jungler: ["Li Bai", "Han Xin", "Butterfly"],
+          mid: ["Shangguan Wan'er", "Gao Jianli", "Kong Ming", "Diao Chan"],
+          roamer: ["Zhuangzi", "Donghuang Taiyi"],
+          farmLaner: ["Garo", "Hou Yi", "Luban No. 7", "Marco Polo"]
+        }
+      },
+      {
+        name: "Yao",
+image: "images/yao.jpg", // Path to Yao's image        
+counters: {
+          clash: ["Dun", "Guan Yu"],
+          jungler: ["Nakroth", "Han Xin", "Wukong"],
+          mid: ["Gao Jianli", "Mozi", "Angela", "Daji"],
+          roamer: ["Zhuangzi", "Lian Po"],
+          farmLaner: ["Marco Polo", "Lady Sun", "Luban No. 7"]
+       
+      }
+      },
+    ];
+
+    const resultList = document.getElementById("resultList");
+
+    function displayResults(data) {
+      resultList.innerHTML = "";
+      if (data.length === 0) {
+        resultList.innerHTML = `<p class="no-results">No results found.</p>`;
+        return;
+      }
+
+      data.forEach((entry) => {
+        const resultCard = document.createElement("div");
+        resultCard.classList.add("result-card");
+       resultCard.innerHTML = `
+  <div style="display: flex; align-items: center;">
+    <img src="${entry.image}" alt="${entry.name} Image" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 50%;">
+    <h2 style="margin: 0;">${entry.name}</h2>
+  </div>
+  <p><strong>Clash Counters:</strong> ${entry.counters.clash.join(", ")}</p>
+  <p><strong>Jungler Counters:</strong> ${entry.counters.jungler.join(", ")}</p>
+  <p><strong>Mid Counters:</strong> ${entry.counters.mid.join(", ")}</p>
+  <p><strong>Roamer Counters:</strong> ${entry.counters.roamer.join(", ")}</p>
+  <p><strong>Farm Laner Counters:</strong> ${entry.counters.farmLaner.join(", ")}</p>
+`;
+
+;
+        resultList.appendChild(resultCard);
+      });
+    }
+
+    function filterResults() {
+      const query = document.getElementById("searchBar").value.toLowerCase();
+      const terms = query.split("+").map(term => term.trim());
+
+      const filtered = roamerData.filter(entry => {
+        const allFields = [entry.name, ...Object.values(entry.counters).flat()];
+        return terms.every(term => allFields.some(field => field.toLowerCase().includes(term)));
+      });
+
+      displayResults(filtered);
+    }
+
+    // Initial load
+    displayResults(roamerData);
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Counters - Honor of Kings Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="hero_counters.html" class="active">Hero Counters</a></li>
+      <li><a href="meta.html">Meta</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h1>Hero Counters</h1>
+    <div class="filter-section">
+      <label for="roleSelect">Select Role:</label>
+      <select id="roleSelect">
+        <option value="clash">Clash</option>
+        <option value="jungling">Jungling</option>
+        <option value="mid">Mid</option>
+        <option value="roamer">Roamer</option>
+        <option value="farmlane">Farm Lane</option>
+      </select>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchBar" placeholder="Search for heroes...">
+    </div>
+
+    <div id="heroResults" class="hero-grid">
+      <!-- Filtered hero results will be displayed here -->
+    </div>
+  </div>
+
+  <script>
+    const heroData = {
+      clash: [
+        { name: "Lu Bu", image: "images/lubu.jpg", counters: "Xiang Yu, Arthur" },
+        { name: "Mulan", image: "images/mulan.jpg", counters: "Yi Xing, Mozi" }
+      ],
+      jungling: [
+        { name: "Mulan", image: "images/mulan.jpg", counters: "Yi Xing, Mozi" },
+        { name: "Yi Xing", image: "images/yixing.jpg", counters: "Mozi, Diao Chan" }
+      ],
+      mid: [
+        { name: "Diao Chan", image: "images/diaochan.jpg", counters: "Kong Ming, Angela" },
+        { name: "Kong Ming", image: "images/kongming.jpg", counters: "Angela, Diao Chan" }
+      ],
+      roamer: [
+        { name: "Zhuge Liang", image: "images/zhuge.jpg", counters: "Sun Wukong, Lian Po" },
+        { name: "Sun Wukong", image: "images/wukong.jpg", counters: "Zhuge Liang, Lian Po" },
+        { name: "Lian Po", image: "images/lianpo.jpg", counters: "Zhuangzi, Guiguzi" }
+      ],
+      farmlane: [
+        { name: "Donghuang Taiyi", image: "images/donghuang.jpg", counters: "Zhuangzi, Cai Yan" },
+        { name: "Zhuangzi", image: "images/zhuangzi.jpg", counters: "Donghuang Taiyi, Cai Yan" }
+      ]
+    };
+
+    document.getElementById('roleSelect').addEventListener('change', updateResults);
+    document.getElementById('searchBar').addEventListener('input', updateResults);
+
+    function updateResults() {
+      const role = document.getElementById('roleSelect').value;
+      const query = document.getElementById('searchBar').value.toLowerCase();
+      const results = heroData[role].filter(hero => hero.name.toLowerCase().includes(query));
+
+      const heroResults = document.getElementById('heroResults');
+      heroResults.innerHTML = results.map(hero => `
+        <div class="hero-card">
+          <h2>${hero.name}</h2>
+          <img src="${hero.image}" alt="${hero.name}">
+          <p>Counters: ${hero.counters}</p>
+        </div>
+      `).join('');
+    }
+
+    // Initialize with default role
+    updateResults();
+  </script>
+</body>
+</html>

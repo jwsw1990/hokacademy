@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honor of Kings Academy - Clash Heroes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Hero Counters</a>
+        <div class="dropdown-content">
+          <a href="clash.html">Clash</a>
+          <a href="roamer.html">Roamer</a>
+          <a href="jungling.html">Jungling</a>
+          <a href="mid.html">Mid</a>
+          <a href="farmlane.html">Farm Lane</a>
+        </div>
+      </li>
+      <li><a href="meta.html">Meta</a></li>
+    </ul>
+  </div>
+
+  <div class="hero-counters-container">
+    <h1>Honor of Kings Mid Lane Counters</h1>
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="Search for a hero or counter (use + for multiple terms)..."
+        id="searchBar"
+        oninput="filterResults()"
+      />
+    </div>
+    <div id="resultList">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+  </div>
+
+  <script>
+    const midData = [
+  {
+    name: "Kui",
+    image: "images/kui.jpg",
+    counters: {
+      clash: ["Yang Jian", "Guan Yu"],
+      jungler: ["Nakroth", "Han Xin", "Wukong"],
+      mid: ["Kong Ming", "Gao Jianli", "Angela", "Daji"],
+      roamer: ["Lian Po", "Donghuang Taiyi"],
+      farmLaner: ["Hou Yi", "Luban No.7", "Marco Polo", "Lady Sun"]
+    }
+  },
+  {
+    name: "Xiao Qiao",
+    image: "images/xiaoqiao.jpg",
+    counters: {
+      clash: ["Lu Bu", "Xiang Yu", "Arthur"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Daji", "Angela", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  },
+  {
+    name: "Zhou Yu",
+    image: "images/zhouyu.jpg",
+    counters: {
+      clash: ["Arthur", "Mulan", "Xiang Yu"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Hou Yi", "Lady Sun", "Marco Polo"]
+    }
+  },
+  {
+    name: "Mozi",
+    image: "images/mozi.jpg",
+    counters: {
+      clash: ["Arthur", "Xiang Yu", "Lu Bu"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Angela", "Daji", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Luban No.7"]
+    }
+  },
+  {
+    name: "Daji",
+    image: "images/daji.jpg",
+    counters: {
+      clash: ["Arthur", "Mulan", "Xiang Yu"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Angela", "Shangguan Wan'er", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Hou Yi", "Lady Sun", "Marco Polo"]
+    }
+  },
+  {
+    name: "Dr Bian",
+    image: "images/drbian.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Xiang Yu"],
+      jungler: ["Nakroth", "Butterfly", "Wukong"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Luban No.7", "Marco Polo", "Hou Yi"]
+    }
+  },
+  {
+    name: "Gao",
+    image: "images/gao.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Xiang Yu"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Daji", "Angela", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  },
+  {
+    name: "Gan & Mo",
+    image: "images/ganmo.jpg",
+    counters: {
+      clash: ["Arthur", "Xiang Yu", "Mulan"],
+      jungler: ["Han Xin", "Butterfly", "Nakroth"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Hou Yi", "Lady Sun", "Marco Polo"]
+    }
+  },
+  {
+    name: "Ziya",
+    image: "images/ziya.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Xiang Yu"],
+      jungler: ["Nakroth", "Butterfly", "Han Xin"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  },
+  {
+    name: "Diaochan",
+    image: "images/diaochan.jpg",
+    counters: {
+      clash: ["Arthur", "Xiang Yu", "Mulan"],
+      jungler: ["Han Xin", "Nakroth", "Butterfly"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Hou Yi", "Lady Sun", "Marco Polo"]
+    }
+  },
+  {
+    name: "Angela",
+    image: "images/angela.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Xiang Yu"],
+      jungler: ["Nakroth", "Butterfly", "Han Xin"],
+      mid: ["Daji", "Shangguan Wan'er", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  },
+  {
+    name: "Liang",
+    image: "images/liang.jpg",
+    counters: {
+      clash: ["Mulan", "Xiang Yu", "Arthur"],
+      jungler: ["Han Xin", "Nakroth", "Li Bai"],
+      mid: ["Angela", "Daji", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Sun Bin"],
+      farmLaner: ["Marco Polo", "Lady Sun", "Hou Yi"]
+    }
+  },
+  {
+    name: "Princess Frost",
+    image: "images/princessfrost.jpg",
+    counters: {
+      clash: ["Arthur", "Xiang Yu", "Mulan"],
+      jungler: ["Nakroth", "Butterfly", "Han Xin"],
+      mid: ["Daji", "Angela", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Cai Yan", "Zhuangzi"],
+      farmLaner: ["Hou Yi", "Marco Polo", "Luban No.7"]
+    }
+  },
+  {
+    name: "Yuhuan",
+    image: "images/yuhuan.jpg",
+    counters: {
+      clash: ["Arthur", "Mulan", "Xiang Yu"],
+      jungler: ["Han Xin", "Nakroth", "Butterfly"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Hou Yi", "Lady Sun", "Marco Polo"]
+    }
+  },
+  {
+    name: "Nuwa",
+    image: "images/nuwa.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Mulan"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Daji", "Angela", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Sun Bin"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  },
+  {
+    name: "Yixing",
+    image: "images/yixing.jpg",
+    counters: {
+      clash: ["Xiang Yu", "Arthur", "Lu Bu"],
+      jungler: ["Han Xin", "Butterfly", "Nakroth"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Sun Bin"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Luban No.7"]
+    }
+  },
+  {
+    name: "Kong Ming",
+    image: "images/kongming.jpg",
+    counters: {
+      clash: ["Arthur", "Guan Yu", "Yang Jian"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Mozi", "Angela", "Daji"],
+      roamer: ["Donghuang Taiyi", "Cai Yan", "Zhuangzi"],
+      farmLaner: ["Hou Yi", "Marco Polo", "Lady Sun"]
+    }
+  },
+  {
+    name: "Milady",
+    image: "images/milady.jpg",
+    counters: {
+      clash: ["Arthur", "Xiang Yu", "Mulan"],
+      jungler: ["Han Xin", "Butterfly", "Nakroth"],
+      mid: ["Angela", "Daji", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  },
+  {
+    name: "Shangguan Wan'er",
+    image: "images/shangguan.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Xiang Yu"],
+      jungler: ["Han Xin", "Nakroth", "Butterfly"],
+      mid: ["Mozi", "Angela", "Daji"],
+      roamer: ["Donghuang Taiyi", "Cai Yan", "Zhuangzi"],
+      farmLaner: ["Hou Yi", "Marco Polo", "Lady Sun"]
+    }
+  },
+  {
+    name: "Shi",
+    image: "images/shi.jpg",
+    counters: {
+      clash: ["Arthur", "Mulan", "Xiang Yu"],
+      jungler: ["Nakroth", "Han Xin", "Butterfly"],
+      mid: ["Daji", "Angela", "Kong Ming"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Hou Yi", "Marco Polo", "Lady Sun"]
+    }
+  },
+  {
+    name: "Heino",
+    image: "images/heino.jpg",
+    counters: {
+      clash: ["Lu Bu", "Arthur", "Xiang Yu"],
+      jungler: ["Han Xin", "Nakroth", "Butterfly"],
+      mid: ["Angela", "Daji", "Shangguan Wan'er"],
+      roamer: ["Donghuang Taiyi", "Zhuangzi", "Cai Yan"],
+      farmLaner: ["Marco Polo", "Hou Yi", "Lady Sun"]
+    }
+  }
+];
+
+
+const resultList = document.getElementById("resultList");
+
+function displayResults(data) {
+  resultList.innerHTML = "";
+  if (data.length === 0) {
+    resultList.innerHTML = `<p class="no-results">No results found.</p>`;
+    return;
+  }
+
+  data.forEach((entry) => {
+    const resultCard = document.createElement("div");
+    resultCard.classList.add("result-card");
+   resultCard.innerHTML = `
+<div style="display: flex; align-items: center;">
+<img src="${entry.image}" alt="${entry.name} Image" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 50%;">
+<h2 style="margin: 0;">${entry.name}</h2>
+</div>
+<p><strong>Clash Counters:</strong> ${entry.counters.clash.join(", ")}</p>
+<p><strong>Jungler Counters:</strong> ${entry.counters.jungler.join(", ")}</p>
+<p><strong>Mid Counters:</strong> ${entry.counters.mid.join(", ")}</p>
+<p><strong>Roamer Counters:</strong> ${entry.counters.roamer.join(", ")}</p>
+<p><strong>Farm Laner Counters:</strong> ${entry.counters.farmLaner.join(", ")}</p>
+`;
+    resultList.appendChild(resultCard);
+  });
+}
+
+function filterResults() {
+  const query = document.getElementById("searchBar").value.toLowerCase();
+  const terms = query.split("+").map(term => term.trim());
+
+  const filtered = clashData.filter(entry => {
+    const allFields = [entry.name, ...Object.values(entry.counters).flat()];
+    return terms.every(term => allFields.some(field => field.toLowerCase().includes(term)));
+  });
+
+  displayResults(filtered);
+}
+
+// Initial load
+displayResults(midData);
+</script>
+</body>
+</html>

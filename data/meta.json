@@ -1,0 +1,123 @@
+{
+  "lastUpdated": "2023-12-14",
+  "patch": "1.0.0",
+  "roles": {
+    "clash": {
+      "title": "Clash Lane Meta",
+      "tiers": {
+        "s": {
+          "label": "S",
+          "description": "Dominant Picks",
+          "heroes": [
+            {
+              "name": "Lian Po",
+              "change": "buff",
+              "changeNote": "Base armor increased, making him more durable in early game"
+            },
+            {
+              "name": "Xiang Yu",
+              "change": null
+            },
+            {
+              "name": "Arthur",
+              "change": null
+            }
+          ]
+        },
+        "a": {
+          "label": "A",
+          "description": "Strong Picks",
+          "heroes": [
+            {
+              "name": "Mulan",
+              "change": null
+            },
+            {
+              "name": "Guan Yu",
+              "change": null
+            },
+            {
+              "name": "Lu Bu",
+              "change": "nerf",
+              "changeNote": "Ultimate cooldown increased"
+            }
+          ]
+        }
+      }
+    },
+    "mid": {
+      "title": "Mid Lane Meta",
+      "tiers": {
+        "s": {
+          "label": "S",
+          "description": "Dominant Picks",
+          "heroes": [
+            {
+              "name": "Yi Xing",
+              "change": "buff",
+              "changeNote": "Skill damage scaling improved"
+            },
+            {
+              "name": "Mozi",
+              "change": "adjust",
+              "changeNote": "Skill mechanics adjusted for better control"
+            },
+            {
+              "name": "Diao Chan",
+              "change": null
+            }
+          ]
+        },
+        "a": {
+          "label": "A",
+          "description": "Strong Picks",
+          "heroes": [
+            {
+              "name": "Kong Ming",
+              "change": null
+            },
+            {
+              "name": "Angela",
+              "change": null
+            }
+          ]
+        }
+      }
+    },
+    "roamer": {
+      "title": "Roamer Meta",
+      "tiers": {
+        "s": {
+          "label": "S",
+          "description": "Dominant Picks",
+          "heroes": [
+            {
+              "name": "Donghuang Taiyi",
+              "change": "buff",
+              "changeNote": "Movement speed buff duration extended"
+            },
+            {
+              "name": "Zhuangzi",
+              "change": null
+            }
+          ]
+        },
+        "a": {
+          "label": "A",
+          "description": "Strong Picks",
+          "heroes": [
+            {
+              "name": "Cai Yan",
+              "change": null
+            },
+            {
+              "name": "Guiguzi",
+              "change": "nerf",
+              "changeNote": "Base health reduced"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

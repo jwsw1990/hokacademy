@@ -10,7 +10,9 @@
 
 body {
   font-family: 'Orbitron', 'Rajdhani', 'Segoe UI', Arial, sans-serif;
-  background-image: linear-gradient(rgba(25,42,86,0.85), rgba(13,20,40,0.85)), url('images/background.jpg');
+  background-image: 
+    linear-gradient(rgba(25,42,86,0.85), rgba(13,20,40,0.85)), 
+    url('file:///c:/Users/kimbe/Documents/hok-academy/images/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -170,8 +172,8 @@ body {
   padding: 20px;
   background-color: rgba(25,42,86,0.3);
   background-image: 
-    linear-gradient(rgba(25,42,86,0.85), rgba(13,20,40,0.85)), 
-    url('../images/background.jpg');
+    linear-gradient(rgba(25,42,86,0.6), rgba(13,20,40,0.6)), 
+    url('images/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

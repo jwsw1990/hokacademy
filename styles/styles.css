@@ -130,18 +130,16 @@ body {
 }
 
 .hero-banner {
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/background.jpg');
+  height: 300px;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  height: 400px;
-  color: var(--text-light);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/background.jpg');
 }
 
 .hero-banner::before {
@@ -151,22 +149,19 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(0,168,255,0.15), rgba(25,42,86,0.15));
+  background: rgba(15, 25, 35, 0.6);
   z-index: 1;
 }
 
 .hero-banner h1 {
-  font-size: 4rem;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  color: var(--text-light);
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 0 4px 6px rgba(0,0,0,0.3);
   position: relative;
   z-index: 2;
-  text-shadow: 
-    -1px -1px 0 #000000,
-    2px -2px 0 #000000,
-    -0px 2px 0 #000000,
-    2px 2px 0 #000000;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .container {

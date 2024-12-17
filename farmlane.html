@@ -30,7 +30,7 @@
     </ul>
   </div>
 
-  <div class="container">
+  <div class="hero-counters-container">
     <h1>Honor of Kings Farm Lane Counters</h1>
     <div class="search-container">
       <input
@@ -225,7 +225,7 @@
     }
   }
 ];
-
+//console.log(farmlaneData);
 
 const resultList = document.getElementById("resultList");
 
@@ -258,7 +258,7 @@ function filterResults() {
   const query = document.getElementById("searchBar").value.toLowerCase();
   const terms = query.split("+").map(term => term.trim());
 
-  const filtered = clashData.filter(entry => {
+  const filtered = farmlaneData.filter(entry => {
     const allFields = [entry.name, ...Object.values(entry.counters).flat()];
     return terms.every(term => allFields.some(field => field.toLowerCase().includes(term)));
   });
